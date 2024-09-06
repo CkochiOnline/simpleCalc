@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            background-color: rgb(45, 45, 45);
+        }
+
+        .simpleCalc {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+            padding: 10px;
+            background-color: rgb(0, 250, 170);
+            border: solid 5px black;
+            border-radius: 10%;
+            width: 200px;
+        }
+
+        .buttonDisplay {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px;
+            padding: 10px;
+        }
+
+        #display {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="simpleCalc">
+
+        <!-- /* Input felt hvor tallene vises, den er disabled (disabled betyr input feltet kan ikke trykkes på eller skrives i)*/ -->
+        <input type="text" id="display" disabled />
+
+        <div class="buttonDisplay">
+
+            <!-- /* Button med onclick "ClearAll" funksjon, sletter innholdet i displayet. */-->
+            <button onclick="clearAll()">C</button>
+
+            <!-- /* Button med onclick "showInDisplay" funksjon, viser tall og symboler i displayet. */ -->
+            <button onclick="showInDisplay('/')">/</button>
+            <button onclick="showInDisplay('*')">*</button>
+            <button onclick="showInDisplay('-')">-</button>
+            <button onclick="showInDisplay('7')">7</button>
+            <button onclick="showInDisplay('8')">8</button>
+            <button onclick="showInDisplay('9')">9</button>
+            <button onclick="showInDisplay('+')">+</button>
+            <button onclick="showInDisplay('4')">4</button>
+            <button onclick="showInDisplay('5')">5</button>
+            <button onclick="showInDisplay('6')">6</button>
+
+            <!-- /* Button med onclick "calcThis" funksjon, kalkulerer, er lik. */ -->
+            <button onclick="calcThis()">=</button>
+
+            <!-- /* Button med onclick "showInDisplay" funksjon, viser tallene i displayet. */ -->
+            <button onclick="showInDisplay('1')">1</button>
+            <button onclick="showInDisplay('2')">2</button>
+            <button onclick="showInDisplay('3')">3</button>
+            <button onclick="showInDisplay('0')">0</button>
+        </div>
+    </div>
+
+    <script>
+
+        // Function "clearAll", fjerner alt innhold i displayet.
+        function clearAll() {
+            document.getElementById('display').value = ``;
+        }
+
+        // Function "showInDisplay" med value, viser symbolene og tallene i displayet, eller input feltet.
+        function showInDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        // Function "calcThis", kalkulerer innholdet i displayet som blir lagret i variabelen const.
+        // display.value = eval. eval er en function i JavaScript som regner ut innholdet i en variabel.
+        function calcThis() {
+            const display = document.getElementById('display');
+            display.value = eval(display.value);
+        }
+
+    </script>
+</body>
+
+</html>
